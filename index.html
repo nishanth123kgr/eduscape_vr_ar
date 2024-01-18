@@ -4,11 +4,17 @@
     <title>Eduscape</title>
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
+    <script src="./aframe-material.min.js"></script>
+    <script type="text/javascript">
+      AFRAME.ASSETS_PATH = "./assets";
+    </script>
   </head>
   <body>
-    <a-scene>
+    <a-scene cursor="rayOrigin: mouse">
       <!-- Sky -->
       <a-sky color="#000" hide-on-enter-ar></a-sky>
+
       <a-assets>
         <a-asset-item
           id="intestine"
@@ -27,13 +33,13 @@
         <a-asset-item id="mus3" src="./models/muscle/mus3.glb"></a-asset-item>
         <a-asset-item
           id="artery"
-          src="./models/nervous/artery.glb"
+          src="./models/circulatory/artery.glb"
         ></a-asset-item>
         <a-asset-item
           id="heart"
-          src="./models/nervous/heart.glb"
+          src="./models/circulatory/heart.glb"
         ></a-asset-item>
-        <a-asset-item id="vein" src="./models/nervous/vein.glb"></a-asset-item>
+        <a-asset-item id="vein" src="./models/circulatory/vein.glb"></a-asset-item>
         <a-asset-item id="brain" src="./models/organs/brain.glb"></a-asset-item>
         <a-asset-item id="lungs" src="./models/organs/lung.glb"></a-asset-item>
         <a-asset-item id="dia" src="./models/organs/dia.glb"></a-asset-item>
@@ -61,10 +67,24 @@
           src="./models/skeleton/spine.glb"
         ></a-asset-item>
       </a-assets>
+
+      <a-entity laser-controls="hand: right"></a-entity>
+
+      <!-- lights -->
       <a-entity
-        light="type: spot; angle: 23; castShadow: true; intensity: 1.5;"
+        light="type: spot; angle: 23; castShadow: true; intensity: 0.8;"
         rotation="-61 0 0"
         position="0 2.521 0.441"
+      ></a-entity>
+      <a-entity
+        light="angle: 45; type: spot; intensity: 0.5;"
+        rotation="-0.91 0 0"
+        position="0 0.206 0.947"
+      ></a-entity>
+
+      <a-entity
+        light="type: spot; color: #7CB9E8; intensity: 0.5; "
+        position="0 2 2"
       ></a-entity>
 
       <a-entity
@@ -80,16 +100,19 @@
         <a-entity id="muscle">
           <a-entity
             gltf-model="#mus1"
+            id="muscle1m"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#mus2"
+            id="muscle2m"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#mus3"
+            id="muscle3m"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
@@ -97,33 +120,39 @@
         <a-entity id="digestive">
           <a-entity
             gltf-model="#intestine"
+            id="intestinem"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#liver"
+            id="liverm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#pancreas"
+            id="pancreasm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
         </a-entity>
-        <a-entity id="nervous">
+        <a-entity id="circulatory">
           <a-entity
             gltf-model="#artery"
+            id="arteriesm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#vein"
+            id="veinsm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#heart"
+            id="heartm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
@@ -131,26 +160,31 @@
         <a-entity id="organs">
           <a-entity
             gltf-model="#brain"
+            id="brainm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#dia"
+            id="diaphragmm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#eyes"
+            id="eyesm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#kidney"
+            id="kidneym"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#lungs"
+            id="lungsm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
@@ -158,63 +192,105 @@
         <a-entity id="skeleton">
           <a-entity
             gltf-model="#arms"
+            id="upperlimbsm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#legs"
+            id="lowerlimbsm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#lower"
+            id="pelvicm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#ribs"
+            id="ribcagem"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#skull"
+            id="skullm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
           <a-entity
             gltf-model="#spinal"
+            id="spinalcordm"
             scale=".2 .2 .2"
             shadow="receive: false;"
           ></a-entity>
         </a-entity>
       </a-entity>
 
-      <a-entity
-        light="angle: 45; type: spot"
-        rotation="-0.91 0 0"
-        position="0 0.206 0.947"
-      ></a-entity>
-
-      <a-entity
-        light="type: spot; color: #7CB9E8; intensity: 1;"
-        position="0 2 2"
-      ></a-entity>
-
       <!-- Camera -->
-      <a-entity
-        camera
-        look-controls
-        wasd-controls
-        position="0 1.6 2"
+      <a-entity>
+        <a-camera
+          look-controls-enabled
+          wasd-controls-enabled
+          mouse-cursor
+          position="0 1.6 1.5"
+        ></a-camera
       ></a-entity>
+      ><!-- Pointer -->
 
-      <!-- Pointer -->
-      <a-cursor
-        color="#FF5733"
-        opacity="0.7"
-        geometry="radiusInner: 0.005; radiusOuter: 0.007"
-        position="0 0 -1"
-      ></a-cursor>
+      <a-rounded
+        position="1 0.5 -0.5"
+        width="4.5"
+        height="4"
+        radius="0.05"
+        rotation="0 -20 0"
+        scale="0.3 0.3 0.3"
+        material="emissive: #ffffff;"
+      >
+        <a-form position="0 0.8 0">
+          <a-entity id="model_topics">
+            <a-button
+              position="0.2 2.8 0"
+              name="digestive"
+              value="Digestive"
+              type="raised"
+            ></a-button>
+            <a-button
+              position="1.55 2.8 0"
+              name="muscular"
+              value="Muscular"
+              type="raised"
+            ></a-button>
+            <a-button
+              position="2.9 2.8 0"
+              name="circulatory"
+              value="Circulatory"
+              type="raised"
+              width="1.2"
+            ></a-button>
+            <a-button
+              position="0.9 2.35 0"
+              name="organs"
+              value="Organs"
+              type="raised"
+            ></a-button>
+            <a-button
+              position="2.2 2.35 0"
+              name="skeleton"
+              value="Skeleton"
+              type="raised"
+            ></a-button>
+          </a-entity>
+          <a-entity id="models_section"><a-entity position="2.2 1.5 0" scale="5 5 5" text="align: center; value:Select anything above; color: #000;"></a-entity> </a-entity>
+          <a-button position=".2 -0.5 0" width="1" id="full_toggle" value="Show All" type="raised" color="#fff"></a-button>
+        </a-form>
+      </a-rounded>
+      <!-- BEGIN TOAST -->
+      <a-toast message="This is a toast" action="Got it" autoshow="false"></a-toast>
+      <!-- END TOAST -->
     </a-scene>
+    <script src="./main.js"></script>
   </body>
 </html>
