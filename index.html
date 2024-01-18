@@ -11,10 +11,6 @@
       <a-sky color="#000"></a-sky>
       <a-assets>
         <a-asset-item
-          id="lab"
-          src="./models/white_round_exhibition_gallery.glb"
-        ></a-asset-item>
-        <a-asset-item
           id="intestine"
           src="./models/digestive/intestine.glb"
         ></a-asset-item>
@@ -26,18 +22,9 @@
           id="pancreas"
           src="./models/digestive/pancreas.glb"
         ></a-asset-item>
-        <a-asset-item
-          id="mus1"
-          src="./models/muscle/muscle_1.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="mus2"
-          src="./models/muscle/muscle_2.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="mus3"
-          src="./models/muscle/muscle_3.glb"
-        ></a-asset-item>
+        <a-asset-item id="mus1" src="./models/muscle/mus1.glb"></a-asset-item>
+        <a-asset-item id="mus2" src="./models/muscle/mus2.glb"></a-asset-item>
+        <a-asset-item id="mus3" src="./models/muscle/mus3.glb"></a-asset-item>
         <a-asset-item
           id="artery"
           src="./models/nervous/artery.glb"
@@ -48,17 +35,17 @@
         ></a-asset-item>
         <a-asset-item id="vein" src="./models/nervous/vein.glb"></a-asset-item>
         <a-asset-item id="brain" src="./models/organs/brain.glb"></a-asset-item>
-        <a-asset-item id="lungs" src="./models/organs/lungs.glb"></a-asset-item>
-        <a-asset-item
-          id="dia"
-          src="./models/organs/diaphragm.glb"
-        ></a-asset-item>
+        <a-asset-item id="lungs" src="./models/organs/lung.glb"></a-asset-item>
+        <a-asset-item id="dia" src="./models/organs/dia.glb"></a-asset-item>
         <a-asset-item id="eyes" src="./models/organs/eyes.glb"></a-asset-item>
         <a-asset-item
           id="kidney"
           src="./models/organs/kidney.glb"
         ></a-asset-item>
-        <a-asset-item id="arms" src="./models/skeleton/arms.glb"></a-asset-item>
+        <a-asset-item
+          id="arms"
+          src="./models/skeleton/hands.glb"
+        ></a-asset-item>
         <a-asset-item id="legs" src="./models/skeleton/legs.glb"></a-asset-item>
         <a-asset-item
           id="lower"
@@ -71,13 +58,13 @@
         ></a-asset-item>
         <a-asset-item
           id="spinal"
-          src="./models/skeleton/spinal.glb"
+          src="./models/skeleton/spine.glb"
         ></a-asset-item>
       </a-assets>
       <a-entity
-        light="type: spot; angle: 23; castShadow: true; intensity: 2;"
+        light="type: spot; angle: 23; castShadow: true; intensity: 1.5;"
         rotation="-61 0 0"
-        position="0 2.1 0.441"
+        position="0 2.521 0.441"
       ></a-entity>
 
       <a-entity
@@ -87,121 +74,125 @@
         scale="100 100 100"
         shadow="cast: false;"
       ></a-entity>
-      <a-entity id="muscle">
-        <a-entity
-          gltf-model="#mus1"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#mus2"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#mus3"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
+
+      <!-- Model -->
+      <a-entity position="-0.060 -1.243 -2.329">
+        <a-entity id="muscle">
+          <a-entity
+            gltf-model="#mus1"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#mus2"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#mus3"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+        </a-entity>
+        <a-entity id="digestive">
+          <a-entity
+            gltf-model="#intestine"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#liver"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#pancreas"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+        </a-entity>
+        <a-entity id="nervous">
+          <a-entity
+            gltf-model="#artery"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#vein"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#heart"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+        </a-entity>
+        <a-entity id="organs">
+          <a-entity
+            gltf-model="#brain"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#dia"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#eyes"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#kidney"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#lungs"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+        </a-entity>
+        <a-entity id="skeleton">
+          <a-entity
+            gltf-model="#arms"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#legs"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#lower"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#ribs"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#skull"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+          <a-entity
+            gltf-model="#spinal"
+            scale=".2 .2 .2"
+            shadow="receive: false;"
+          ></a-entity>
+        </a-entity>
       </a-entity>
-      <a-entity id="digestive">
-        <a-entity
-          gltf-model="#intestine"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#liver"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#pancreas"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-      </a-entity>
-      <a-entity id="nervous">
-        <a-entity
-          gltf-model="#artery"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#vein"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#heart"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-      </a-entity>
-      <a-entity id="organs">
-        <a-entity
-          gltf-model="#brain"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#dia"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#eyes"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#kidney"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#lungs"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-      </a-entity>
-      <a-entity id="skeleton">
-        <a-entity
-          gltf-model="#arms"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#legs"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#lower"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#ribs"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#skull"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-        <a-entity
-          gltf-model="#spinal"
-          scale="0.01 0.01 0.01"
-          shadow="receive: false;"
-        ></a-entity>
-      </a-entity>
-      
+
       <a-entity
         light="angle: 45; type: spot"
         rotation="-0.91 0 0"
-        position="0 0.106 0.947"
+        position="0 0.206 0.947"
       ></a-entity>
 
       <a-entity
