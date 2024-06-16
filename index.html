@@ -9,11 +9,27 @@
     <script type="text/javascript">
       AFRAME.ASSETS_PATH = "./assets";
     </script>
+    <script>
+      AFRAME.registerComponent('hide-in-ar-mode', {
+        // Set this object invisible while in AR mode.
+        init: function () {
+            this.el.sceneEl.addEventListener('enter-vr', (ev) => {
+                this.wasVisible = this.el.getAttribute('visible');
+                if (this.el.sceneEl.is('ar-mode')) {
+                    this.el.setAttribute('visible', false);
+                }
+            });
+            this.el.sceneEl.addEventListener('exit-vr', (ev) => {
+                if (this.wasVisible) this.el.setAttribute('visible', true);
+            });
+        }
+    });
+    </script>
   </head>
   <body>
     <a-scene cursor="rayOrigin: mouse">
       <!-- Sky -->
-      <a-sky color="#000" hide-on-enter-ar></a-sky>
+      <a-sky color="#000" hide-in-ar-mode></a-sky>
 
       <a-assets>
         <a-asset-item
@@ -93,6 +109,7 @@
         rotation="-90"
         scale="100 100 100"
         shadow="cast: false;"
+        hide-in-ar-mode
       ></a-entity>
 
       <!-- Model -->
